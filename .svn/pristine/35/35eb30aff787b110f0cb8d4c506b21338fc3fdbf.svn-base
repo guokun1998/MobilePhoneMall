@@ -1,0 +1,136 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Checkout</title>
+<link href="../css/shoppingcart/ootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../css/shoppingcart/style.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Shopin Responsive web template, Bootstrap Web Templates, Flat Web Templates, AndroId Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--theme-style-->
+<link href="../css/shoppingcart/style4.css" rel="stylesheet" type="text/css" media="all" />	
+<!--//theme-style-->
+<script src="../js/shoppingcart/jquery.min.js"></script>
+<!--- start-rate---->
+<script src="../js/shoppingcart/jstarbox.js"></script>
+<link rel="stylesheet" href="../css/shoppingcart/jstarbox.css" type="text/css" media="screen" charset="utf-8" />
+		<script type="text/javascript">
+			jQuery(function() {
+			jQuery('.starbox').each(function() {
+				var starbox = jQuery(this);
+					starbox.starbox({
+					average: starbox.attr('data-start-value'),
+					changeable: starbox.hasClass('unchangeable') ? false : starbox.hasClass('clickonce') ? 'once' : true,
+					ghosting: starbox.hasClass('ghosting'),
+					autoUpdateAverage: starbox.hasClass('autoupdate'),
+					buttons: starbox.hasClass('smooth') ? false : starbox.attr('data-button-count') || 5,
+					stars: starbox.attr('data-star-count') || 5
+					}).bind('starbox-value-changed', function(event, value) {
+					if(starbox.hasClass('random')) {
+					var val = Math.random();
+					starbox.next().text(' '+val);
+					return val;
+					} 
+				})
+			});
+		});
+		</script>
+<!---//End-rate---->
+</head>
+<body>
+
+<%@ include file="header.jsp"%>
+<!--banner-->
+<div class="banner-top">
+	<div class="container">
+		<h1>我的购物车</h1>
+		<em></em>
+		
+	</div>
+</div>
+<!--login-->
+	<script>$(document).ready(function(c) {
+					$('.close1').on('click', function(c){
+						$('.cart-header').fadeOut('slow', function(c){
+							$('.cart-header').remove();
+						});
+						});	  
+					});
+			   </script>
+<script>$(document).ready(function(c) {
+					$('.close2').on('click', function(c){
+						$('.cart-header1').fadeOut('slow', function(c){
+							$('.cart-header1').remove();
+						});
+						});	  
+					});
+			   </script>
+			   <script>$(document).ready(function(c) {
+					$('.close3').on('click', function(c){
+						$('.cart-header2').fadeOut('slow', function(c){
+							$('.cart-header2').remove();
+						});
+						});	  
+					});
+			   </script>
+<div class="container">
+	<div class="check-out">
+	<div class="bs-example4">
+    <div class="table-responsive">
+    <form action="shoppingcart/myShoppingcart.action" method="post">
+	<table class="table-heading simpleCart_shelfItem">
+		<tr>
+			<th class="table-grid">商品名称</th>	
+			<th>商品价格</th>
+			<th>数量</th>
+			
+			<th>总价格</th>
+		</tr>
+		
+		<c:forEach items="${shoppingcartQueryList }" var="shoppingcartQuery">
+			<tr class="cart-header">
+			 
+				<td class="ring-in">
+					
+				<div class="sed">
+					<h5>${shoppingcartQuery.goodsName}</h5>
+				</div>
+				<div class="clearfix"> </div>
+				<div class="close1"> </div>
+				</td>
+				<td><!-- 第一件商品价格-->${shoppingcartQuery.goodsOffprice}</td>
+				<td><!-- 第一件商品数量-->${shoppingcartQuery.buyGoodsCount}</td>
+				<td class="item_price"><!-- 第一件商品总价格-->${shoppingcartQuery.priceSum}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	 </form>
+	</div>
+	</div>
+	<div class="produced">
+	<a href="../pay/payShoppingcart.action" class="hvr-skew-backward">结算</a>
+	 </div>
+    </div>
+</div>
+
+<!--//login-->
+<!--brand-->
+		<div class="container">
+			<div class="brand">
+			</div>
+			<!--//brand-->
+		</div>
+	</div>
+	<script src="../js/shoppingcart/simpleCart.min.js"> </script>
+<!-- slide -->
+<script src="../js/shoppingcart/bootstrap.min.js"></script>
+ <%@ include file="footer.jsp"%>
+</body>
+</html>

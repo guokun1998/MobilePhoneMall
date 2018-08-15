@@ -1,0 +1,9 @@
+package cn.hrbeu.mapper;
+
+import cn.hrbeu.po.Items;
+
+
+public interface ItemsMapper {
+
+	public Items findItemsById(Integer id);
+}

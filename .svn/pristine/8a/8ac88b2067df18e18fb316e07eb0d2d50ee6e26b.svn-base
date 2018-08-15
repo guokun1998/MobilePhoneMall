@@ -1,0 +1,46 @@
+package cn.hrbeu.controller;
+
+
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hrbeu.po.Shoppingcart;
+import cn.hrbeu.po.Shoppingcartdetail;
+import cn.hrbeu.po.User;
+import cn.hrbeu.service.ShoppingcartService;
+import cn.hrbeu.service.ShoppingcartdetailService;
+
+
+@Controller
+@RequestMapping("shoppingcartdetail")
+public class ShoppingcartdetailController {
+	@Autowired
+	private ShoppingcartdetailService shoppingcartdetailService;
+	@Autowired
+	private ShoppingcartService shoppingcartService;
+	
+	@RequestMapping("/insertOneShoppingcartdetail")
+	public String insertOneShoppingcartdetail(HttpServletRequest request,HttpSession session) throws Exception{
+		//得到HttpServletRequest得到userId，再查询得到Shoppingcart，再得到ShoppingcartId
+		
+		
+		User user = (User) session.getAttribute("user");
+		
+		Shoppingcart shoppingcart = shoppingcartService.findShoppingcartByUserId(user.getUserId());
+		
+		Shoppingcartdetail shoppingcartdetail = new Shoppingcartdetail();
+		shoppingcartdetail.setGoodsName(request.getParameter("goodsName"));
+		shoppingcartdetail.setBuyGoodsCount(Integer.parseInt(request.getParameter("buyGoodsCount")));
+		shoppingcartdetail.setShoppingcartId(shoppingcart.getShoppingcartId());
+		
+		shoppingcartdetailService.insertOneShoppingcartdetail(shoppingcartdetail);
+		return "../jsp/addSuccess";
+	}
+}

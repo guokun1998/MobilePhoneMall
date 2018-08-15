@@ -1,0 +1,9 @@
+package cn.hrbeu.mapper;
+
+
+import cn.hrbeu.po.Orderdetail;
+
+public interface OrderdetailMapper {
+	
+	public void insertOneOrderdetail(Orderdetail orderdetail);
+}

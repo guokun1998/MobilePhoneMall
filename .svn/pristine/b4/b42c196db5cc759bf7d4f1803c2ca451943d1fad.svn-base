@@ -1,0 +1,43 @@
+package cn.hrbeu.po;
+
+public class Shoppingcart {
+    private Integer shoppingcartid;
+
+    private Integer userid;
+
+    private Double buyprice;
+
+    private Long usertelephone;
+
+    public Integer getShoppingcartid() {
+        return shoppingcartid;
+    }
+
+    public void setShoppingcartid(Integer shoppingcartid) {
+        this.shoppingcartid = shoppingcartid;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Double getBuyprice() {
+        return buyprice;
+    }
+
+    public void setBuyprice(Double buyprice) {
+        this.buyprice = buyprice;
+    }
+
+    public Long getUsertelephone() {
+        return usertelephone;
+    }
+
+    public void setUsertelephone(Long usertelephone) {
+        this.usertelephone = usertelephone;
+    }
+}

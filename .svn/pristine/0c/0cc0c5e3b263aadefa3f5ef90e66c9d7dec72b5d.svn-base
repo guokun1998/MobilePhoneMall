@@ -1,0 +1,99 @@
+package cn.hrbeu.po;
+
+import java.util.Date;
+
+public class Goods {
+    private Integer goodsid;
+
+    private String goodsname;
+
+    private Double goodsprice;
+
+    private Date goodsfactorydate;
+
+    private Double goodsrepairtime;
+
+    private String goodscolor;
+
+    private String goodstype;
+
+    private Double goodsoffprice;
+
+
+
+    private String goodspicture;
+
+    public Integer getGoodsid() {
+        return goodsid;
+    }
+
+    public void setGoodsid(Integer goodsid) {
+        this.goodsid = goodsid;
+    }
+
+    public String getGoodsname() {
+        return goodsname;
+    }
+
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname == null ? null : goodsname.trim();
+    }
+
+    public Double getGoodsprice() {
+        return goodsprice;
+    }
+
+    public void setGoodsprice(Double goodsprice) {
+        this.goodsprice = goodsprice;
+    }
+
+    public Date getGoodsfactorydate() {
+        return goodsfactorydate;
+    }
+
+    public void setGoodsfactorydate(Date goodsfactorydate) {
+        this.goodsfactorydate = goodsfactorydate;
+    }
+
+    public Double getGoodsrepairtime() {
+        return goodsrepairtime;
+    }
+
+    public void setGoodsrepairtime(Double goodsrepairtime) {
+        this.goodsrepairtime = goodsrepairtime;
+    }
+
+    public String getGoodscolor() {
+        return goodscolor;
+    }
+
+    public void setGoodscolor(String goodscolor) {
+        this.goodscolor = goodscolor == null ? null : goodscolor.trim();
+    }
+
+    public String getGoodstype() {
+        return goodstype;
+    }
+
+    public void setGoodstype(String goodstype) {
+        this.goodstype = goodstype == null ? null : goodstype.trim();
+    }
+
+    public Double getGoodsoffprice() {
+        return goodsoffprice;
+    }
+
+    public void setGoodsoffprice(Double goodsoffprice) {
+        this.goodsoffprice = goodsoffprice;
+    }
+
+
+
+    public String getGoodspicture() {
+        return goodspicture;
+    }
+
+    public void setGoodspicture(String goodspicture) {
+        this.goodspicture = goodspicture == null ? null : goodspicture.trim();
+    }
+}

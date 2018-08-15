@@ -1,0 +1,36 @@
+package cn.hrbeu.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.hrbeu.mapper.OrderdetailMapper;
+import cn.hrbeu.po.Orderdetail;
+
+@Service
+public class OrderdetailServiceImpl implements OrderdetailService{
+	
+	@Autowired
+	OrderdetailMapper orderdetailMapper;
+
+	@Override
+	public void insertOneOrderdetail(Orderdetail orderdetail) throws Exception {
+		// TODO Auto-generated method stub
+		orderdetailMapper.insertOneOrderdetail(orderdetail);
+	}
+
+	@Override
+	public List<Orderdetail> findOrderdetailByOrderId(Integer OrderId) throws Exception {
+		// TODO Auto-generated method stub
+		return orderdetailMapper.findOrderdetailByOrderId(OrderId);
+	}
+
+	@Override
+	public void deleteOneOrderdetailByOrderId(Integer OrderId) throws Exception {
+		// TODO Auto-generated method stub
+		orderdetailMapper.deleteOneOrderdetailByOrderId(OrderId);
+	}
+	
+	
+}

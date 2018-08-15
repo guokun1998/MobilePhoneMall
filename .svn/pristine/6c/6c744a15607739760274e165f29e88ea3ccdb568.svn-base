@@ -1,0 +1,30 @@
+package cn.hrbeu.mapperdefault;
+
+import cn.hrbeu.po.Shoppingcartdetail;
+import cn.hrbeu.po.ShoppingcartdetailExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
+public interface ShoppingcartdetailMapper {
+    int countByExample(ShoppingcartdetailExample example);
+
+    int deleteByExample(ShoppingcartdetailExample example);
+
+    int deleteByPrimaryKey(Integer shoppingcartdetailid);
+
+    int insert(Shoppingcartdetail record);
+
+    int insertSelective(Shoppingcartdetail record);
+
+    List<Shoppingcartdetail> selectByExample(ShoppingcartdetailExample example);
+
+    Shoppingcartdetail selectByPrimaryKey(Integer shoppingcartdetailid);
+
+    int updateByExampleSelective(@Param("record") Shoppingcartdetail record, @Param("example") ShoppingcartdetailExample example);
+
+    int updateByExample(@Param("record") Shoppingcartdetail record, @Param("example") ShoppingcartdetailExample example);
+
+    int updateByPrimaryKeySelective(Shoppingcartdetail record);
+
+    int updateByPrimaryKey(Shoppingcartdetail record);
+}

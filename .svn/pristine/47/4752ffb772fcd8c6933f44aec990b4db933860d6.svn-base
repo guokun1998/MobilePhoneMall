@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hrbeu.mapper.GoodsMapper">
+
+	<select id="findGoodsByGoodsName" parameterType="String" resultType="Goods">
+		SELECT * FROM goods WHERE goodsName=#{value}
+	</select>
+
+	<select id="findCanSellGoodsByGoodsName" parameterType="String" resultType="Goods">
+		SELECT * FROM goods WHERE goodsName=#{value} and goodsHasSelled='false'
+	</select>
+	
+	<select id="findGoodsListByGoodsName" parameterType="String" resultType="Goods">
+		SELECT DISTINCT goodsName,goodsPrice,goodsColor,goodsType,goodsOffprice FROM goods WHERE goodsName LIKE '%${value}%' and goodsHasSelled='false' 
+	</select>
+	
+	
+	
+	<update id="updateGoodsHasSelledByGoods" parameterType="Goods">
+		UPDATE goods SET goodsHasSelled=#{goodsHasSelled} WHERE goodsId=#{goodsId}
+	</update>
+	
+	
+	<update id="updateGoodsOffpriceByGoods" parameterType="Goods">
+		UPDATE goods 
+		<set>
+		goodsOffprice = #{goodsOffprice}
+		
+		WHERE goodsName=#{goodsName}
+		</set>	
+	</update>
+</mapper>

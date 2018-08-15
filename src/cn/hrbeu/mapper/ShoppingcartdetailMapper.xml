@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hrbeu.mapper.ShoppingcartdetailMapper">
+	<insert id="insertOneShoppingcartdetail" parameterType="Shoppingcartdetail">
+		INSERT INTO shoppingcartdetail(goodsName,buyGoodsCount,shoppingcartId)
+		values (#{goodsName},#{buyGoodsCount},#{shoppingcartId})
+	</insert>
+	
+	<select id="findShoppingcartdetailByShoppingcartId" parameterType="Integer" resultType="Shoppingcartdetail">
+		select * from shoppingcartdetail where ShoppingcartId=#{value}
+	</select>
+	
+	<delete id="deleteOneShoppingcartdetailByShoppingcartdetailId" parameterType="Integer">
+		DELETE FROM shoppingcartdetail where shoppingcartdetailId=#{value}
+	</delete>
+	
+	<update id="updateOneShoppingcartdetailByShoppingcartdetail" parameterType="Shoppingcartdetail">
+		UPDATE shoppingcartdetail SET buyGoodsCount=#{buyGoodsCount} where shoppingcartdetailId=#{shoppingcartdetailId}
+	</update>
+</mapper>

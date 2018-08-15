@@ -1,0 +1,59 @@
+package cn.hrbeu.controller;
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hrbeu.po.Goods;
+import cn.hrbeu.po.Shoppingcart;
+import cn.hrbeu.po.ShoppingcartQuery;
+import cn.hrbeu.po.Shoppingcartdetail;
+import cn.hrbeu.po.User;
+import cn.hrbeu.service.GoodsService;
+import cn.hrbeu.service.ShoppingcartService;
+import cn.hrbeu.service.ShoppingcartdetailService;
+
+
+@Controller
+@RequestMapping("shoppingcart")
+public class ShoppingcartController {
+	@Autowired
+	private ShoppingcartService shoppingcartService;
+	@Autowired
+	private ShoppingcartdetailService shoppingcartdetailService;
+	@Autowired
+	private GoodsService goodsService;
+	
+	@RequestMapping("/myShoppingcart")
+	public String findShoppingcartList(HttpServletRequest request,HttpSession session) throws Exception{
+		User user = (User) session.getAttribute("user");
+		Shoppingcart shoppingcart = shoppingcartService.findShoppingcartByUserId(user.getUserId());
+		List<Shoppingcartdetail> shoppingcartdetailList = shoppingcartdetailService.findShoppingcartdetailByShoppingcartId(shoppingcart.getShoppingcartId());
+		
+		List<ShoppingcartQuery> shoppingcartQueryList = new ArrayList<ShoppingcartQuery>();
+		
+		for(Shoppingcartdetail shoppingcartdetail : shoppingcartdetailList){
+			ShoppingcartQuery shoppingcartQuery = new ShoppingcartQuery();
+			shoppingcartQuery.setBuyGoodsCount(shoppingcartdetail.getBuyGoodsCount());
+			List<Goods> goodsList = goodsService.findGoodsByGoodsName(shoppingcartdetail.getGoodsName());
+			Goods goods = goodsList.get(0);
+			shoppingcartQuery.setGoodsName(goods.getGoodsName());
+			shoppingcartQuery.setGoodsOffprice(goods.getGoodsOffprice());
+			shoppingcartQueryList.add(shoppingcartQuery);
+			
+		}
+		session.setAttribute("shoppingcartQueryList", shoppingcartQueryList);
+//		request.setAttribute("shoppingcartQueryList", shoppingcartQueryList);
+		return "../jsp/myShoppingcart";
+	}
+}

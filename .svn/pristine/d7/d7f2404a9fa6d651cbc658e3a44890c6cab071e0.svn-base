@@ -1,0 +1,43 @@
+package cn.hrbeu.po;
+
+public class Shoppingcartdetail {
+    private Integer shoppingcartdetailid;
+
+    private Integer shoppingcartid;
+
+    private Integer goodsid;
+
+    private Integer buygoodscount;
+
+    public Integer getShoppingcartdetailid() {
+        return shoppingcartdetailid;
+    }
+
+    public void setShoppingcartdetailid(Integer shoppingcartdetailid) {
+        this.shoppingcartdetailid = shoppingcartdetailid;
+    }
+
+    public Integer getShoppingcartid() {
+        return shoppingcartid;
+    }
+
+    public void setShoppingcartid(Integer shoppingcartid) {
+        this.shoppingcartid = shoppingcartid;
+    }
+
+    public Integer getGoodsid() {
+        return goodsid;
+    }
+
+    public void setGoodsid(Integer goodsid) {
+        this.goodsid = goodsid;
+    }
+
+    public Integer getBuygoodscount() {
+        return buygoodscount;
+    }
+
+    public void setBuygoodscount(Integer buygoodscount) {
+        this.buygoodscount = buygoodscount;
+    }
+}

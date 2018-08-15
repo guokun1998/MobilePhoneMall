@@ -1,0 +1,32 @@
+package cn.hrbeu.controller;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hrbeu.po.Items;
+import cn.hrbeu.service.ItemsService;
+
+
+@Controller
+@RequestMapping("items")
+public class ItemsController {
+	
+	@Autowired
+	private ItemsService itemsService;
+	
+	public void setItemsService(ItemsService itemsService){
+		this.itemsService = itemsService;
+	}
+	
+	@RequestMapping("/queryItems")
+	public String findItemsById(Integer id,Model model) throws Exception{
+		Items items = itemsService.findItemsById(id);
+		model.addAttribute("items",items);
+		
+		return "items/itemsList";
+	}
+}

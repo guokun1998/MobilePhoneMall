@@ -1,0 +1,7 @@
+package cn.hrbeu.service;
+
+import cn.hrbeu.po.Order;
+
+public interface OrderService {
+	public Integer insertOneOrder(Order order) throws Exception;
+}

@@ -1,0 +1,7 @@
+package cn.hrbeu.service;
+
+import cn.hrbeu.po.Goods;
+
+public interface GoodsService {
+	public Goods findItemsById(Integer id) throws Exception;
+}

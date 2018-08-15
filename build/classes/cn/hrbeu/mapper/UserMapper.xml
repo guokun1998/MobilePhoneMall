@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hrbeu.mapper.UserMapper">
+	<insert id="insertOneUser" parameterType="User">
+		INSERT INTO USER(userName,userNickname,userPassword,userTelephone)
+		values (#{userName}, #{userNickname}, #{userPassword}, #{userTelephone})
+	</insert>
+	<select id="findUserIdByUserTelephone" parameterType="String" resultType="Integer">
+		SELECT userId FROM USER WHERE userTelephone=#{value}
+	</select>
+	<select id="findUserByUserTelephone" parameterType="String" resultType="User">
+		SELECT * FROM USER WHERE userTelephone=#{value}
+	</select>
+	<select id="findUserByUserRegister" parameterType="User" resultType="User">
+		SELECT * FROM USER WHERE userTelephone=#{userTelephone} AND userPassword=#{userPassword}
+	</select>
+	<update id="updateUserByUser" parameterType="User">
+    update user
+    	
+    <set>
+      <if test="userNickname != null" >
+        userNickname = #{userNickname},
+       </if>
+      <if test="userName != null" >	
+    	userName = #{userName},  
+   	   </if>
+   	  <if test="userPassword != null" >	 
+    	userPassword = #{userPassword},  
+     	</if>
+      <if test="userBirthday != null" >		
+    	userBirthday = #{userBirthday}, 
+		 </if>    
+      <if test="userSex != null" >		
+    	userSex = #{userSex},
+    	 </if>
+      <if test="userEmail != null" >		
+    	userEmail = #{userEmail},
+       </if>
+      <if test="userTelephone != null" >		
+    	userTelephone = #{userTelephone},
+       </if>
+      <if test="userAddress != null" >		
+      userAddress = #{userAddress}
+    	 </if>
+    </set>
+    where userId =#{userId}
+  	</update>
+  	
+  	<delete id="deleteUserById" parameterType="java.lang.Integer" >
+    	delete from user
+    	where userId = #{value}
+  	</delete>
+</mapper>

@@ -1,0 +1,98 @@
+package cn.hrbeu.controller;
+
+
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import cn.hrbeu.po.User;
+import cn.hrbeu.service.ShoppingcartService;
+import cn.hrbeu.service.UserService;
+
+@Controller
+@RequestMapping("user")
+public class UserController {
+	@Autowired
+	private UserService userService;
+	@Autowired
+	private ShoppingcartService shoppingcartService;
+	
+	/**
+	 * 用户注册controller，判断手机号是否重复，不重复即可成功注册，并生成对应的购物车
+	 * @param request
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/register")
+	public String insertOneUser(HttpServletRequest request,Model model) throws Exception{
+		
+		//通过HttpServletRequest读取表单中的数据（表单中的name就是其对应对象的名称）
+		User user = new User();
+		user.setUserName(request.getParameter("userName"));
+		user.setUserNickname(request.getParameter("userNickname"));
+		user.setUserPassword(request.getParameter("userPassword"));
+		user.setUserTelephone(request.getParameter("userTelephone"));
+		
+		//查询手机号是否被注册
+		Integer userId = userService.findUserIdByUserTelephone(user.getUserTelephone());
+		if(userId != null)
+			return "../jsp/registerFail";
+		
+		//未被注册，插入数据
+		userService.insertOneUser(user);
+		//根据上述的User得到userId，生成一个与当前用户关联的购物车
+		user.setUserId(userService.findUserIdByUserTelephone(user.getUserTelephone()));
+		shoppingcartService.insertOneShoppingcart(user);
+
+		//返回注册成功的页面
+		return "../jsp/registerSuccess";
+	}
+	
+	/**
+	 * 用户登录controller，通过HttpServletRequest得到表单中的数据，查询数据库是否有此用户，若成功登录写入HttpSession域中数据
+	 * @param request
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/login")
+	public String findUserByUserRegister(HttpServletRequest request,HttpSession session) throws Exception{
+		
+		User loginUser = new User();
+		loginUser.setUserTelephone(request.getParameter("userTelephone"));
+		loginUser.setUserPassword(request.getParameter("userPassword"));
+		loginUser.setUserId(userService.findUserIdByUserTelephone(request.getParameter("userTelephone")));
+		User user = userService.findUserByUserRegister(loginUser);
+		System.out.println(user.getUserBirthday());
+		if(user == null)
+			return "../jsp/loginFail";
+		session.setAttribute("user", user);
+//		return "/register";
+		return "redirect:../index.jsp";
+	}
+	
+	/**
+	 * 用户退出controller，清除HttpSession
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/logout")
+	public String logout(HttpSession session) throws Exception{
+		
+		session.invalidate();
+		
+		return "redirect:../index.jsp";
+	}
+	
+	@RequestMapping("/userCenter")
+	public String userCenter(HttpServletRequest request,HttpSession session) throws Exception{
+		
+		return "redirect:../jsp/personalPage.jsp";
+	}
+}

@@ -1,0 +1,11 @@
+package cn.hrbeu.mapper;
+
+import java.util.List;
+
+import cn.hrbeu.po.Goods;
+
+public interface GoodsMapper {
+	public List<Goods> findGoodsByGoodsName(String goodsName);
+	public List<Goods> findCanSellGoodsByGoodsName(String goodsName);
+	public void updateGoodsHasSelledByGoods(Goods goods);
+}

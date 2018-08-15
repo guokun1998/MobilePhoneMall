@@ -1,0 +1,75 @@
+package cn.hrbeu.po;
+
+import java.util.Date;
+
+public class Order {
+    private Integer orderid;
+
+    private Integer userid;
+
+    private Double shipping;
+
+    private Double orderprice;
+
+    private Date buytime;
+
+    private String useraddress;
+
+    private Long usertelephone;
+
+    public Integer getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(Integer orderid) {
+        this.orderid = orderid;
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
+
+    public Double getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(Double shipping) {
+        this.shipping = shipping;
+    }
+
+    public Double getOrderprice() {
+        return orderprice;
+    }
+
+    public void setOrderprice(Double orderprice) {
+        this.orderprice = orderprice;
+    }
+
+    public Date getBuytime() {
+        return buytime;
+    }
+
+    public void setBuytime(Date buytime) {
+        this.buytime = buytime;
+    }
+
+    public String getUseraddress() {
+        return useraddress;
+    }
+
+    public void setUseraddress(String useraddress) {
+        this.useraddress = useraddress == null ? null : useraddress.trim();
+    }
+
+    public Long getUsertelephone() {
+        return usertelephone;
+    }
+
+    public void setUsertelephone(Long usertelephone) {
+        this.usertelephone = usertelephone;
+    }
+}

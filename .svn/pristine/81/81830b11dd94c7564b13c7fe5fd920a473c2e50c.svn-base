@@ -1,0 +1,7 @@
+package cn.hrbeu.mapper;
+
+import cn.hrbeu.po.Goods;
+
+public interface GoodsMapper {
+	public Goods findGoodsByGoodsId(Integer id);
+}

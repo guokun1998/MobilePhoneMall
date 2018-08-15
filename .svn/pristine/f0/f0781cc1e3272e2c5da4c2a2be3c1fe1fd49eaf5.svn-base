@@ -1,0 +1,39 @@
+package cn.hrbeu.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import cn.hrbeu.po.Goods;
+import cn.hrbeu.po.ShoppingcartQuery;
+import cn.hrbeu.service.GoodsService;
+
+@Controller
+@RequestMapping("pay")
+public class PayController {
+	
+	@Autowired
+	private GoodsService goodsService;
+	
+	@RequestMapping("/payShoppingcart")
+	public String payShoppingcart(HttpServletRequest request,HttpSession session) throws Exception{
+//		List<ShoppingcartQuery> shoppingcartQueryList = (List<ShoppingcartQuery>) request.getAttribute("shoppingcartQueryList");
+		List<ShoppingcartQuery> shoppingcartQueryList = (List<ShoppingcartQuery>) session.getAttribute("shoppingcartQueryList");
+		for(ShoppingcartQuery shoppingcartQuery : shoppingcartQueryList){
+			
+			List<Goods> goodsList = goodsService.findCanSellGoodsByGoodsName(shoppingcartQuery.getGoodsName());
+			if(goodsList.size()<shoppingcartQuery.getBuyGoodsCount()){
+				//该商品库存不够
+			}
+			else{
+				
+			}
+		}
+		return "../jsp/paySuccess";
+	}
+}

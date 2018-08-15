@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hrbeu.mapper.OrderdetailMapper">
+	<insert id="insertOneOrderdetail" parameterType="Orderdetail">
+		INSERT INTO orderdetail(orderId,goodsId)
+		values (#{orderId},#{goodsId})
+	</insert>
+	
+	<select id="findOrderdetailByOrderId" parameterType="Integer" resultType="Orderdetail">
+		SELECT * FROM Orderdetail WHERE orderId=#{value}
+	</select>
+	<delete id="deleteOneOrderdetailByOrderId" parameterType="Integer">
+		DELETE FROM Orderdetail where orderId=#{value}
+	</delete>
+	
+	<select id="findOrderdetailByGoodsId" parameterType="Integer" resultType="Orderdetail">
+		SELECT * FROM Orderdetail WHERE goodsId=#{value}
+	</select>
+</mapper>

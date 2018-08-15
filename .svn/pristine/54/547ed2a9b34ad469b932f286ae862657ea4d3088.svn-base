@@ -1,0 +1,4 @@
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://10.25.38.149/mobilephonemall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+jdbc.username=root
+jdbc.password=123

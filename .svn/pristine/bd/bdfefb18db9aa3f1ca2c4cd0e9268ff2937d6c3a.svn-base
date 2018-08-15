@@ -1,0 +1,26 @@
+package cn.hrbeu.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import cn.hrbeu.mapper.GoodsMapper;
+import cn.hrbeu.po.Goods;
+
+
+
+@Service
+public class GoodsServiceImpl implements GoodsService{
+
+	
+	@Autowired
+	private GoodsMapper goodsMapper;
+	
+	
+	@Override
+	public Goods findItemsById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return goodsMapper.findGoodsByGoodsId(id);
+	}
+
+}

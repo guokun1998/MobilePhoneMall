@@ -1,0 +1,7 @@
+package cn.hrbeu.mapper;
+
+import cn.hrbeu.po.Order;
+
+public interface OrderMapper {
+	public void insertOneOrder(Order order);
+}

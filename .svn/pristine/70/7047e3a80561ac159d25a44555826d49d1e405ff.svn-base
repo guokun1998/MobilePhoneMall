@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hrbeu.mapper.OrderMapper">
+	<insert id="insertOneOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="orderId">
+		<!-- INSERT INTO order(userId,orderPrice,buyTime,userAddress,userTelephone)
+		values (#{userId},#{orderPrice},#{buyTime},#{userAddress},#{userTelephone}) -->
+		INSERT INTO `mobilephonemall`.`order`(`userId`,`orderPrice`,`buyTime`,`userAddress`,`userTelephone`) 
+		VALUES (#{userId},#{orderPrice},#{buyTime},#{userAddress},#{userTelephone});
+		<!-- <selectKey keyProperty="orderId" resultType="Integer" order="AFTER">
+     		SELECT LAST_INSERT_ID() as orderId
+    	</selectKey> -->
+	</insert>
+	
+</mapper>

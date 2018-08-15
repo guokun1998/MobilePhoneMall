@@ -1,0 +1,16 @@
+package cn.hrbeu.service;
+
+
+
+import cn.hrbeu.po.Items;
+import cn.hrbeu.po.ItemsCustom;
+
+
+
+public interface ItemsService {
+
+	
+	public Items findItemsById(Integer id) throws Exception;
+
+
+}

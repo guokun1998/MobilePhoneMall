@@ -1,0 +1,12 @@
+package cn.hrbeu.service;
+
+
+import cn.hrbeu.po.User;
+
+public interface UserService {
+	public void insertOneUser(User user) throws Exception;
+	
+	public Integer findUserIdByUserTelephone(String userTelephone) throws Exception;
+	
+	public User findUserByUserRegister(User user) throws Exception;
+}

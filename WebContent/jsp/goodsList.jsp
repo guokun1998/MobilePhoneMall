@@ -1,0 +1,103 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>商品列表</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<link href="../css/orderandpersonalpage/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="../css/orderandpersonalpage/style.css" rel="stylesheet" type="text/css" media="all" />	
+
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<link href="../css/orderandpersonalpage/style4.css" rel="stylesheet" type="text/css" media="all" />	
+
+<script src="../js/orderandpersonalpage/jquery.min.js"></script>
+
+	<!---->
+	<!--<style>
+	</style>-->
+	<script type="text/JavaScript" language="JavaScript">
+		function doclick(){
+		
+		var docs = document.getElementsByClassName("limit");
+		var orderId = document.getElementById("changeOrderId").value;
+		
+		for(var i=0;i<docs.length;i++){
+			docs[i].readOnly = false;
+		} 
+		document.getElementById("changeOrderId").readOnly = false;
+		}
+		function submit1(){
+			document.getElementsByName("f")[0].submit();
+		}
+
+</script>
+</head>
+<body>
+<%@ include file="header.jsp"%>
+<div class="banner-top">
+	<div class="container">
+		<h1>商品列表</h1>
+		<em></em>
+	</div>
+</div>
+<script>$(document).ready(function(c) {
+	$('.close1').on('click', function(c){
+		$('.cart-header').fadeOut('slow', function(c){
+			$('.cart-header').remove();
+		});
+		});	  
+	});
+</script>
+<script>$(document).ready(function(c) {
+	$('.close2').on('click', function(c){
+		$('.cart-header1').fadeOut('slow', function(c){
+			$('.cart-header1').remove();
+		});
+		});	  
+	});
+</script>
+<script>$(document).ready(function(c) {
+	$('.close3').on('click', function(c){
+		$('.cart-header2').fadeOut('slow', function(c){
+			$('.cart-header2').remove();
+		});
+		});	  
+	});
+</script>
+<div class="container">
+	<div class="check-out">
+	<div class="bs-example4" data-example-id="simple-responsive-table">
+    <div class="table-responsive">
+    <table class="table-heading simpleCart_shelfItem">
+		   <tr>
+			<th>商品名称 </th>
+			<th>商品价格</th>
+			<th>商品颜色 </th>
+			<th>商品型号</th>
+			<th>商品促销价格 </th>
+		  </tr>
+		<c:forEach items="${goodsList}" var="goods">
+			<tr class="cart-header">
+		<div class="clearfix"> </div>
+			
+				<td><a href="../jsp/goodsDetail.jsp?goodsName=${goods.goodsName}"><input type="text" id="t1" class="limit2" value="${goods.goodsName}" name="goodsName" readOnly/></a></td>
+				<td><input type="text" id="t2" class="limit2" value="${goods.goodsPrice}" name="goodsPrice" readOnly /></td>
+				<td><input type="text" id="t3" class="limit2" value="${goods.goodsColor}" name="goodsColor" readOnly /></td>
+				<td><input type="text" id="t4" class="limit" value="${goods.goodsType}" name="goodsType" readOnly /></td>
+				<td><input type="text" id="t5" class="limit" value="${goods.goodsOffprice}" name="goodsOffprice" readOnly /></td>
+			</tr>
+		</c:forEach>
+		</table>
+	 </div>
+	 </div>
+	</div>
+    </div>
+</body>
+</html>

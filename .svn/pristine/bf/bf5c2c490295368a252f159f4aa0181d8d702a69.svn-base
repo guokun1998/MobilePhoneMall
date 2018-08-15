@@ -1,0 +1,7 @@
+package cn.hrbeu.service;
+
+import cn.hrbeu.po.Orderdetail;
+
+public interface OrderdetailService {
+	public void insertOneOrderdetail(Orderdetail orderdetail) throws Exception;
+}

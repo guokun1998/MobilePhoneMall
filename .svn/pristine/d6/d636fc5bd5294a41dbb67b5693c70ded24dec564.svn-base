@@ -1,0 +1,31 @@
+package cn.hrbeu.service;
+
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.hrbeu.mapper.ItemsMapper;
+import cn.hrbeu.po.Items;
+import cn.hrbeu.po.ItemsCustom;
+
+
+@Service
+public class ItemsServiceImpl implements ItemsService{
+	
+//	@Autowired
+//	private ItemsMapperCustom itemsMapperCustom;
+	@Autowired
+	private ItemsMapper itemsMapper;
+//	public void setItemsMapperCustom(ItemsMapperCustom itemsMapperCustom) {
+//		this.itemsMapperCustom = itemsMapperCustom;
+//	}
+
+
+	@Override
+	public Items findItemsById(Integer id) throws Exception {
+		// TODO Auto-generated method stub
+		return itemsMapper.findItemsById(id);
+	}
+	
+}

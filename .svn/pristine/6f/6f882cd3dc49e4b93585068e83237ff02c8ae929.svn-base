@@ -1,0 +1,52 @@
+package cn.hrbeu.controller;
+
+
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import cn.hrbeu.po.Goods;
+import cn.hrbeu.po.Orderdetail;
+import cn.hrbeu.service.GoodsService;
+import cn.hrbeu.service.OrderdetailService;
+
+@Controller
+@RequestMapping("orderdetail")
+public class OrderdetailController {
+	@Autowired
+	private OrderdetailService orderdetailService;
+	
+	/**
+	 * 商品详情页controller，根据HttpServletRequest发出的goodsName，进行查询，并写入model
+	 * @param request
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	/*@RequestMapping("/myOrder")
+	public String findGoodsByGoodsName(HttpServletRequest request,Model model) throws Exception{
+		
+		List<Goods> goodsList = goodsService.findGoodsByGoodsName(request.getParameter("goodsName"));
+		if(goodsList.isEmpty()){
+			//商品卖完了
+		}
+		else{
+			model.addAttribute("goods",goodsList.get(0));
+		}
+			
+		return "/jsp/goodsDetail";
+	}*/
+	
+	@RequestMapping("/oneOrderdetail")
+	public String showOneOrder(HttpServletRequest request) throws Exception{
+		Integer orderId = Integer.parseInt(request.getParameter("orderId"));
+		List<Orderdetail> orderdetailList = orderdetailService.findOrderdetailByOrderId(orderId);
+		request.setAttribute("orderdetailList", orderdetailList);
+		return "../jsp/orderDetail";
+	}
+}
